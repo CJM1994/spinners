@@ -1,25 +1,11 @@
 const spinner = function () {
-
-  setTimeout(() => {
-    process.stdout.write('\r|   ');
-  }, 100);
-
-  setTimeout(() => {
-    process.stdout.write('\r/   ');
-  }, 300);
-
-  setTimeout(() => {
-    process.stdout.write('\r-   ');
-  }, 500);
-
-  setTimeout(() => {
-    process.stdout.write('\r\\   ');
-  }, 700);
-
-  setTimeout(() => {
-    return spinner();
-  }, 800)
-
+  const spinnerStage = ['\r|   ', '\r/   ', '\r-   ', '\r\\   '];
+  let delay = 200;
+  for (const stage of spinnerStage) {
+    setTimeout(() => { process.stdout.write(stage) }, delay)
+    delay += 200;
+  }
+  setTimeout(() => { console.log() }, delay);
 }
 
 spinner();
